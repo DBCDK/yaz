@@ -193,6 +193,9 @@ static Z_ItemOrder *encode_item_order(ZOOM_package p)
     {
         req->u.esRequest->notToKeep->itemRequest =
             z_ext_record_xml(p->odr_out, str, len);
+        // DBC quick Fix for Stats biblioteket.
+        req->u.esRequest->notToKeep->resultSetItem = 0;
+        req->u.esRequest->toKeep = 0;
     }
     else
         req->u.esRequest->notToKeep->itemRequest = encode_ill_request(p);
